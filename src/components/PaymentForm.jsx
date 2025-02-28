@@ -7,7 +7,7 @@ import { useParams } from 'react-router-dom';
 
 const currency_sign = "$";
 const default_amount = 5;
-const min_amount = 1; //el minimo es un dolar
+const min_amount = 1; // minimo valor a donar
 const max_amount = 999999;
 const payment_types = [
   { name: "one-time", mode: "payment", interval: "", },
