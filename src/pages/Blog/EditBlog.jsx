@@ -124,7 +124,7 @@ const EditBlog = () => {
 
     if (blogLoading) return <Loading />
     return (
-        <div>
+        <div className='py-32 px-10'>
             <Card className="pt-5">
                 <CardContent>
                     <h1 className='text-2xl font-bold mb-4'>Edit Blog</h1>

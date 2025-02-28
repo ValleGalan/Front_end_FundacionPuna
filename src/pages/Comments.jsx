@@ -41,7 +41,7 @@ const Comments = () => {
 
     if (loading) return <Loading />
     return (
-        <div className="py-24">
+        <div className='py-32 px-10'>
             <Card >
 
                 <CardContent>
@@ -67,7 +67,7 @@ const Comments = () => {
 
                                         <TableCell className="flex gap-3">
 
-                                            <Button onClick={() => handleDelete(comment._id)} variant="outline" className="hover:bg-violet-500 hover:text-white" >
+                                            <Button onClick={() => handleDelete(comment._id)} variant="outline" className="hover:bg-background_button hover:text-white" >
                                                 <FaRegTrashAlt />
                                             </Button>
                                         </TableCell>

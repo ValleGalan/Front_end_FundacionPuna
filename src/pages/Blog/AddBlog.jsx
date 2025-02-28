@@ -105,7 +105,7 @@ const AddBlog = () => {
     }
 
     return (
-        <div>
+        <div className='py-32 px-10'> 
             <Card className="pt-5">
                 <CardContent>
                     <h1 className='text-2xl font-bold mb-4'>Edit Blog</h1>
@@ -202,7 +202,7 @@ const AddBlog = () => {
                             </div>
 
 
-                            <Button type="submit" className="w-full bg-background_button ">Submit</Button>
+                            <Button type="submit" className="w-full hover:bg-background_button ">Submit</Button>
                         </form>
                     </Form>
 

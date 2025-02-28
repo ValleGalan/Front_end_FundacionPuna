@@ -15,7 +15,7 @@ const BlogByCategory = () => {
 
     if (loading) return <Loading />
     return (
-        <>
+        <div className='py-32 px-10'>
             <div className='flex items-center gap-3 text-2xl font-bold  border-b pb-3 mb-5'>
                 <BiCategory />
                 <h4  >   {blogData && blogData.categoryData?.name}</h4>
@@ -28,7 +28,7 @@ const BlogByCategory = () => {
                     <div>Data Not Found.</div>
                 }
             </div>
-        </>
+        </div>
     )
 }
 

@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import { getEvn } from '@/helpers/getEnv'
 import { showToast } from '@/helpers/showToast'
-
+import { useFetch } from "@/hooks/useFetch";
+import Loading from '@/components/Loading'
+import { useParams } from 'react-router-dom';
 
 const currency_sign = "$";
 const default_amount = 5;
@@ -20,6 +22,17 @@ function PaymentForm() {
   const [paymentType, setPaymentType] = useState(payment_types[0]); //Almacena el tipo de pago (único, mensual o anual)
   const [isSubmit, setSubmit] = useState(false);
 
+  const { id } = useParams(); // Obtén el id desde la URL
+  const [refreshData, setRefreshData] = useState(false)
+      const { user } = useFetch(`${getEvn('VITE_API_BASE_URL')}/user/get-user/${id}`, { // /get-user/:userid
+          method: 'get',
+          credentials: 'include'
+      }, [refreshData])
+      if (!user) {
+        return <Loading />; 
+    }
+    console.log("Usuario obtenido:", user);
+
   const setPaymentAmount = (am) => { //monto esté dentro del rango permitido.
     if (am < min_amount) {
       am = min_amount;
@@ -29,31 +42,23 @@ function PaymentForm() {
     setAmount(parseFloat(am).toFixed(2));
   };
 
+  const { data, loading, error } = useFetch(`${getEvn('VITE_API_BASE_URL')}/create-checkout-session/payment/${id}`, { ///create-checkout-session/payment
+    method: "POST",
+    credentials: "include", // las cookies se envíen
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ 
+      amount, mode: 
+      paymentType.mode, 
+      interval: paymentType.interval ,userId:  user.userid  
+    }),
+  }, [amount, paymentType]);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     setSubmit(true);
-
-   // let formData = new FormData();
-   // formData.append("amount", amount);
-   // formData.append("mode", paymentType.mode);
-   // formData.append("interval", paymentType.interval);
-
-   useFetch(`${getEvn('VITE_API_BASE_URL')}/create-checkout-session/payment`,{
-      method: "post",
-      credentials: 'include',
-      headers: { "Content-Type": "application/json" },
-      //body: formData,
-      body: JSON.stringify({
-        amount,
-        mode: paymentType.mode,
-        interval: paymentType.interval,
-      }),
-    })
-      .then((response) => response.text())
-      .then((url) => {
-        window.location.replace(url);
-      });
+    if (data) {
+      window.location.replace(data);
+    }
   };
 
   function AmountButton({ value }) {

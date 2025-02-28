@@ -43,7 +43,7 @@ const User = () => {
 
     if (loading) return <Loading />
     return (
-        <div>
+        <div className='py-32 px-10'>
             <Card>
 
                 <CardContent>
@@ -74,7 +74,7 @@ const User = () => {
 
                                         <TableCell className="flex gap-3">
 
-                                            <Button onClick={() => handleDelete(user._id)} variant="outline" className="hover:bg-violet-500 hover:text-white" >
+                                            <Button onClick={() => handleDelete(user._id)} variant="outline" className="hover:bg-background_button hover:text-white" >
                                                 <FaRegTrashAlt />
                                             </Button>
                                         </TableCell>

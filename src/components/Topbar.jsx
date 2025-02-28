@@ -89,7 +89,7 @@ const Topbar = () => {
             <Link to={RouteAboutUs} className='hidden md:block '>About us</Link>
             <Link to={RouteContact} className='hidden md:block '>Contact</Link>
             <Button to={RouteStore} className=" hidden md:block  bg-background_button hover:bg-background_fondo_claro hover:text-black  px-4 py-2 rounded-lg"> Tienda</Button>
-            <Button to={RoutePaymentForm} className="hidden md:block  bg-background_button hover:bg-background_fondo_claro hover:text-black px-4 py-2 rounded-lg"> Donar</Button>
+            <Button  className="hidden md:block  bg-background_button hover:bg-background_fondo_claro hover:text-black px-4 py-2 rounded-lg"><Link to={RoutePaymentForm}>Donar</Link> </Button>
             
             {/* Categorías con Hover */}
             <div 
@@ -130,22 +130,22 @@ const Topbar = () => {
                 </button>
             </div>
             */}
-            {/* Opciones del usuario: login o desloguearte */}
+            <div className='hidden md:block flex justify-between'>
             {user && user.isLoggedIn
-                                        ? <><Link to={RouteCommentDetails}>Comments</Link> </>
-                                        :
-                                        <></>
-                                    }
-                                    {user && user.isLoggedIn && user.user.role === 'admin'
-                                        ? <>
-                                                    <Link to={RouteBlog}>Blogs</Link>
-                                                    <Link to={RouteCategoryDetails}>Categories</Link>
-                                                    <Link to={RouteUser}>Users</Link>
-                                        </>
-                                        :
-                                        <></>
-                                    }
-            
+            ? <><Link to={RouteCommentDetails}>Comments</Link> </>
+            :
+            <></>
+            }
+            {user && user.isLoggedIn && user.user.role === 'admin'
+            ? <div className= "flex justify-between gap-4">
+                        <Link to={RouteBlog}>Blogs</Link>
+                        <Link to={RouteCategoryDetails}>Categories</Link>
+                        <Link to={RouteUser}>Users</Link>
+            </div>
+            :
+            <></>
+            }
+            </div>
 
             
 
@@ -159,7 +159,8 @@ const Topbar = () => {
                 </div>
             </div>
            
-            
+            {/* Opciones del usuario: login o desloguearte */}
+
             <div className='flex items-center gap-5'> {/*  */}
                 <button onClick={toggleSearch} type='button' className='md:hidden block '>
                     <IoMdSearch size={25} />

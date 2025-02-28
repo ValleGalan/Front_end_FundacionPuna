@@ -73,7 +73,7 @@ const EditCategory = () => {
     }
 
     return (
-        <div>
+        <div className='py-32 px-10'>
             <Card className="pt-5 max-w-screen-md mx-auto">
                 <CardContent>
                     <Form {...form}>
@@ -109,7 +109,7 @@ const EditCategory = () => {
                                 />
                             </div>
 
-                            <Button type="submit" className="w-full bg-background_button">Submit</Button>
+                            <Button type="submit" className="w-full bg-background_button  hover:bg-background_button">Submit</Button>
                         </form>
                     </Form>
 

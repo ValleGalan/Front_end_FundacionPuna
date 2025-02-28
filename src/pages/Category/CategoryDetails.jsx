@@ -39,11 +39,11 @@ const CategoryDetails = () => {
 
     if (loading) return <Loading />
     return (
-        <div>
+        <div className='py-32 px-10'>
             <Card>
                 <CardHeader>
                     <div>
-                        <Button asChild className="bg-background_button">
+                        <Button asChild className="bg-background_button hover:bg-background_button  text-black">
                             <Link to={RouteAddCategory}>
                                 Add Category
                             </Link>
@@ -69,12 +69,12 @@ const CategoryDetails = () => {
                                         <TableCell>{category.name}</TableCell>
                                         <TableCell>{category.slug}</TableCell>
                                         <TableCell className="flex gap-3">
-                                            <Button variant="outline" className="hover:bg-violet-500 hover:text-white" asChild>
+                                            <Button variant="outline" className="hover:bg-background_button hover:text-white" asChild>
                                                 <Link to={RouteEditCategory(category._id)}>
                                                     <FiEdit />
                                                 </Link>
                                             </Button>
-                                            <Button onClick={() => handleDelete(category._id)} variant="outline" className="hover:bg-violet-500 hover:text-white" >
+                                            <Button onClick={() => handleDelete(category._id)} variant="outline" className="hover:bg-background_button hover:text-white" >
                                                 <FaRegTrashAlt />
                                             </Button>
                                         </TableCell>

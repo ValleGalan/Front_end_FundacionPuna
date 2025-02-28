@@ -60,6 +60,6 @@ export const RouteValues = "/values"
 export const RouteMission = "/mission"
 export const RouteAboutUs = "/aboutus" 
 export const RouteContact = "/contact"
-export const RoutePaymentForm= "/create-checkout-session"
+export const RoutePaymentForm= "/create-checkout-session/:id"
 
 export const RouteStore = "/store" 

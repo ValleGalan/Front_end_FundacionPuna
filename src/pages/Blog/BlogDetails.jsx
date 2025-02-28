@@ -40,11 +40,11 @@ const BlogDetails = () => {
 
     if (loading) return <Loading />
     return (
-        <div>
+        <div className='py-32 px-10'>
             <Card>
                 <CardHeader>
                     <div>
-                        <Button asChild className="bg-background_button">
+                        <Button asChild className="bg-background_button hover:bg-background_button">
                             <Link to={RouteBlogAdd}>
                                 Add Blog
                             </Link>
@@ -76,12 +76,12 @@ const BlogDetails = () => {
                                         <TableCell>{moment(blog?.createdAt).format('DD-MM-YYYY')}</TableCell>
                                      
                                         <TableCell className="flex gap-3">
-                                            <Button variant="outline" className="hover:bg-violet-500 hover:text-white" asChild>
+                                            <Button variant="outline" className="hover:bg-background_button hover:text-white" asChild>
                                                 <Link to={RouteBlogEdit(blog._id)}>
                                                     <FiEdit />
                                                 </Link>
                                             </Button>
-                                            <Button onClick={() => handleDelete(blog._id)} variant="outline" className="hover:bg-violet-500 hover:text-white bg-background_button" >
+                                            <Button onClick={() => handleDelete(blog._id)} variant="outline" className="hover:bg-background_button hover:text-white" >
                                                 <FaRegTrashAlt />
                                             </Button>
                                         </TableCell>
